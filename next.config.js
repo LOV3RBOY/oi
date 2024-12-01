@@ -8,8 +8,8 @@ const nextConfig = {
   webpack: (config) => {
     config.optimization.splitChunks = {
       chunks: 'all',
-      minSize: 20000,
-      maxSize: 70000,
+      minSize: 10000,
+      maxSize: 250000,
       cacheGroups: {
         default: false,
         vendors: false,
@@ -20,24 +20,40 @@ const nextConfig = {
           priority: 40,
           enforce: true
         },
+        framerMotion: {
+          test: /[\\/]node_modules[\\/]framer-motion[\\/]/,
+          name: 'framer-motion',
+          chunks: 'all',
+          priority: 35
+        },
+        threejs: {
+          test: /[\\/]node_modules[\\/](three|@react-three)[\\/]/,
+          name: 'threejs',
+          chunks: 'all',
+          priority: 35
+        },
         commons: {
           name: 'commons',
-          chunks: 'all',
           minChunks: 2,
           priority: 20
         },
         lib: {
           test: /[\\/]node_modules[\\/]/,
+          name: (module) => {
+            const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
+            return `npm.${packageName.replace('@', '')}`;
+          },
           chunks: 'all',
-          name: 'lib',
-          priority: 30
+          priority: 30,
+          minChunks: 1,
+          reuseExistingChunk: true
         }
       }
     };
     return config;
   },
   experimental: {
-    optimizePackageImports: ['@react-three/fiber', '@react-three/drei', 'three']
+    optimizePackageImports: ['@react-three/fiber', '@react-three/drei', 'three', 'framer-motion']
   },
   images: {
     domains: ['hebbkx1anhila5yf.public.blob.vercel-storage.com'],
