@@ -64,7 +64,10 @@ export default function Scene() {
           rotateSpeed={0.5}
           autoRotate={false}
           enableRotate={true}
-          enableTouch={true}
+          touches={{
+            one: THREE.TOUCH.ROTATE,
+            two: THREE.TOUCH.DOLLY_PAN
+          }}
         />
         <Preload all />
       </Suspense>
