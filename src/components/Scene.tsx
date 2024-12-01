@@ -1,3 +1,4 @@
+// LVRBOY 3D Scene Component v1.0.1 - Interactive model with touch/mouse controls
 'use client';
 
 import { Canvas } from '@react-three/fiber';
