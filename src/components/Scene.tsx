@@ -68,6 +68,11 @@ export default function Scene() {
             one: THREE.TOUCH.ROTATE,
             two: THREE.TOUCH.DOLLY_PAN
           }}
+          mouseButtons={{
+            LEFT: THREE.MOUSE.ROTATE,
+            MIDDLE: THREE.MOUSE.DOLLY,
+            RIGHT: THREE.MOUSE.NONE
+          }}
         />
         <Preload all />
       </Suspense>
