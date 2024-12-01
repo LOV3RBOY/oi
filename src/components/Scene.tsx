@@ -65,8 +65,8 @@ export default function Scene() {
           autoRotate={false}
           enableRotate={true}
           touches={{
-            one: THREE.TOUCH.ROTATE,
-            two: THREE.TOUCH.DOLLY_PAN
+            ONE: THREE.TOUCH.ROTATE,
+            TWO: THREE.TOUCH.DOLLY_PAN
           }}
           mouseButtons={{
             LEFT: THREE.MOUSE.ROTATE,
