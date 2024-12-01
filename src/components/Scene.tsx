@@ -63,8 +63,8 @@ export default function Scene() {
           dampingFactor={0.05}
           rotateSpeed={0.5}
           autoRotate={false}
-          enableTouchRotate={true}
-          enableTouchZoom={true}
+          enableRotate={true}
+          enableTouch={true}
         />
         <Preload all />
       </Suspense>
